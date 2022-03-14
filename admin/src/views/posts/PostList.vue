@@ -1,14 +1,15 @@
 <template>
     <div>
         <h3>课程列表</h3>
+        <div class="mx-1">
+            <el-button type="primary" size="small" @click="$router.push('/posts/create')">创建帖子</el-button>
+            
+        </div>
         <el-table :data="data.data" border stripe>
             <el-table-column v-for="(field,index) in fields"
                 :prop="index"
                 :key="index"
                 :label="field.label">
-
-                
-                
                 
             </el-table-column>
             <!-- 编辑/操作 -->
@@ -25,7 +26,7 @@
                 label="操作"
                 :width="120">
                 <template v-slot="{row}">
-                    <el-button type="danger" plain size="default" @click="dele(row._id)">删除</el-button>
+                    <el-button type="danger" plain size="default" @click="dele(row)">删除</el-button>
                 </template>
             </el-table-column>
 
@@ -50,13 +51,15 @@ export default class PostList extends Vue {
         this.data = res.data
     }
 
-    async dele(id:any){
-        
-        if(confirm('是否删除')){
-            await this.$http.delete(`posts/${id}`)
-            this.$message.success('保存成功')
-            this.fetch()
+    async dele(row:any){
+        try{
+            await this.$confirm(`是否删除“${row.title}”`)
+        }catch(e){
+            return
         }
+        await this.$http.delete(`posts/${row._id}`)
+        this.$message.success('删除成功')
+        this.fetch()
         
     }
 
@@ -66,5 +69,7 @@ export default class PostList extends Vue {
 }
 </script>
 <style>
-    
+   .mx-1{
+       margin: 15px 0;
+   } 
 </style>

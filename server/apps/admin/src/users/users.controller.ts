@@ -1,5 +1,5 @@
 import { UserModul } from '@libs/db/models/user.model';
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { IsNotEmpty } from 'class-validator';
@@ -35,5 +35,18 @@ export class UsersController {
     constructor(
         @InjectModel(UserModul) private readonly model: ModelType<UserModul>
     ){}
+
+    @Get('/option')
+    option(){
+        return {
+            title: '用户管理',
+            column: [
+                { prop: 'name', label: '用户名字' },
+                { prop: 'avatat', label: '用户头像' },
+                { prop: 'account', label: '用户账号' },
+                { prop: 'password', label: '帖子用户密码封面图' },
+            ]
+        }
+    }
 }
 

@@ -61,7 +61,13 @@ export default class Main extends Vue {
         items: [
           { title: '首页',path: '/' },
           { title: '帖子管理',path: '/posts/list' },
-          { title: '帖子创建',path: '/posts/create' }
+          { title: '评论管理',path: '/comments/list' }
+        ]
+      },
+      {
+        title: '运营管理',
+        items: [
+          { title: '用户管理',path: '/users/list' }
         ]
       },
     ]
