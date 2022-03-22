@@ -12,9 +12,12 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000/'
-})
+//main.ts
+const http = axios.create({
+  baseURL: "http://localhost:3000"
+});
+Vue.prototype.$http = http;//vue的axios
+Vue.prototype.$httpajax = http;//avue的axios
 
 new Vue({
   router,

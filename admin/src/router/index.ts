@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Main from '../views/Main.vue'
+import About from '../views/About.vue'
 import Home from '../views/Home.vue'
 import ResourceCrud from '../views/ResourceCrud.vue'
 // import PostList from '../views/posts/PostList.vue'
@@ -16,6 +17,10 @@ const routes: RouteConfig[] = [
       { path: '/',component: Home, },
       { path: '/:resource/list',component: ResourceCrud,props: true },
     ]
+  },
+  {
+    path: '/about',
+    component: About,
   }
 ]
 

@@ -17,9 +17,11 @@ export class PostsController {
     option(){
         return {
             title: '帖子管理',
+            searchMenuSpan:8,
+            translate: false,
             column: [
-                { prop: 'title', label: '帖子标题' },
-                { prop: 'cover', label: '帖子封面图' },
+                { prop: 'title', label: '帖子标题', sortable: true, search: true, regex: true, row: true },
+                { prop: 'cover', label: '帖子封面图', type: 'upload', listType: 'picture-img', span: 24, action: 'upload', row: true, width: '120' },
             ]
         }
     }
